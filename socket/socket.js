@@ -3,10 +3,11 @@ var socketio = require('socket.io');
 
 function onConnect (websocket) {
   var client = new net.Socket({
+    readable: true,
     writeable: true
   });
   client.on('data', function (data) {
-    websocket.emit('data', data.toString());
+    websocket.emit('data', data.toString() + '\n');
   });
   websocket.on('data', function (data) {
     client.write(data);
