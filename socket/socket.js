@@ -7,10 +7,10 @@ function onConnect (websocket) {
     writeable: true
   });
   client.on('data', function (data) {
-    websocket.emit('data', data.toString() + '\n');
+    websocket.emit('data', data.toString());
   });
   websocket.on('data', function (data) {
-    client.write(data);
+    client.write(data + '\n');
   });
   client.on('close', function () {
     websocket.emit('Connection closed by foreign host.');
