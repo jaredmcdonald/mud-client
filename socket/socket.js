@@ -1,6 +1,10 @@
+'use strict';
+
 var net = require('net');
 var socketio = require('socket.io');
 var ansi_up = require('ansi_up');
+var hostname = process.argv[2] || process.env.REMOTE_HOSTNAME;
+var port = process.argv[3] || process.env.REMOTE_PORT;
 
 function onConnect (websocket) {
   var client = new net.Socket({
@@ -21,7 +25,8 @@ function onConnect (websocket) {
   websocket.on('disconnect', function () {
     client.destroy();
   });
-  client.connect(3000, 'avatar.outland.org', function () {
+
+  client.connect(port, hostname, function () {
     console.log('connected');
   });
 }
