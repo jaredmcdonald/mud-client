@@ -2,5 +2,7 @@ extends layout
 
 block content
   pre#content
+  form#userInput
+    input(type='text', placeholder='enter a command...')
   script(src='/socket.io/socket.io.js')
   script(src='/js/app.js')

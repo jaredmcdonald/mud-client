@@ -2,9 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var socket = io.connect();
   var el = document.getElementById('content');
+  var userInput = document.getElementById('userInput');
 
-  socket.on('data', function (data) {
-    el.innerHTML += data;
+  function renderText (text) {
+    el.innerHTML += text;
+  }
+
+  socket.on('data', renderText);
+
+  userInput.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var val = event.target[0].value;
+    if (!val) return false;
+
+    renderText('> ' + val);
+    socket.emit('data', val);
+    event.target[0].value = '';
   });
 
 });
