@@ -3,12 +3,18 @@ var socketio = require('socket.io');
 
 function onConnect (websocket) {
   var client = new net.Socket();
-  client.on('data', websocket.emit.bind(websocket));
-  websocket.on('data', client.write.bind(client));
-
-  client.on('close', websocket.emit.bind(websocket, 'Connection closed by foreign host.'));
-  websocket.on('disconnect', client.destroy.bind(client));
-
+  client.on('data', function (data) {
+    websocket.emit('data', data.toString());
+  });
+  websocket.on('data', function (data) {
+    client.write(data);
+  });
+  client.on('close', function () {
+    websocket.emit('Connection closed by foreign host.');
+  });
+  websocket.on('disconnect', function () {
+    client.destroy();
+  });
   client.connect(3000, 'avatar.outland.org', function () {
     console.log('connected');
   });
