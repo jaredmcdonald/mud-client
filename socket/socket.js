@@ -8,7 +8,9 @@ function onConnect (websocket) {
     writeable: true
   });
   client.on('data', function (data) {
-    websocket.emit('data', ansi_up.ansi_to_html(data.toString()));
+    websocket.emit('data', ansi_up.ansi_to_html(data.toString(), {
+      useClasses: true
+    }));
   });
   websocket.on('data', function (data) {
     client.write(data + '\n');
