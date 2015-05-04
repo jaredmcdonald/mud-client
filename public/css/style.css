@@ -25,7 +25,7 @@
   color: rgb(0, 187, 187);
 }
 .ansi-white-fg {
-  color: rgb(255, 255, 255);
+  color: rgb(187, 187, 187);
 }
 .ansi-bright-black-fg {
   color: rgb(85, 85, 85);
@@ -52,7 +52,7 @@
   color: rgb(85, 255, 255);
 }
 .ansi-bright-white-fg {
-  color: rgb(255, 255, 255);
+  color: rgb(210, 210, 210);
 }
 
 .ansi-black-bg {
