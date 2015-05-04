@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var val = event.target[0].value;
     if (!val) return false;
 
-    renderText('> ' + val);
+    renderText('\n> ' + val);
     socket.emit('data', val);
     event.target[0].value = '';
   });

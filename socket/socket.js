@@ -2,7 +2,9 @@ var net = require('net');
 var socketio = require('socket.io');
 
 function onConnect (websocket) {
-  var client = new net.Socket();
+  var client = new net.Socket({
+    writeable: true
+  });
   client.on('data', function (data) {
     websocket.emit('data', data.toString());
   });
