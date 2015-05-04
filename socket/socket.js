@@ -9,7 +9,7 @@ function onConnect (websocket) {
   });
   client.on('data', function (data) {
     websocket.emit('data', ansi_up.ansi_to_html(data.toString(), {
-      useClasses: true
+      use_classes: true
     }));
   });
   websocket.on('data', function (data) {
