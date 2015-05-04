@@ -11,7 +11,6 @@ function onConnect (websocket) {
   var connection = new telnet();
 
   connection.on('ready', function (prompt) {
-    websocket.emit('data', prompt);
     websocket.on('data', function (data) {
       connection.exec(data, function (response) {
         websocket.emit('data', response);
