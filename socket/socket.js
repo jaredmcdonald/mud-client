@@ -1,5 +1,6 @@
 var net = require('net');
 var socketio = require('socket.io');
+var ansi_up = require('ansi_up');
 
 function onConnect (websocket) {
   var client = new net.Socket({
@@ -7,7 +8,7 @@ function onConnect (websocket) {
     writeable: true
   });
   client.on('data', function (data) {
-    websocket.emit('data', data.toString());
+    websocket.emit('data', ansi_up.ansi_to_html(data.toString()));
   });
   websocket.on('data', function (data) {
     client.write(data + '\n');
