@@ -3,7 +3,8 @@ var telnet = require('telnet-client');
 var socketio = require('socket.io');
 var params = {
   host: 'avatar.outland.org',
-  port: 3000
+  port: 3000,
+  timeout: 1000 * 60 // 1 min timeout
 }
 
 
