@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Keep scroll up to date with input
   function updateScroll () {
-    el.scrollTop = el.scrollHeight;
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
   // Clean up scrollback

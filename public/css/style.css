@@ -1,25 +1,26 @@
 body {
-  position: flex;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
-
 #content,
 #userInput {
-  position: fixed;
+  width: 48em;
+  margin: 0 auto;
+}
+#content,
+#userInput,
+#userInput input {
+  font-family: monospace;
 }
 #content {
-  top: 0;
-  height: 90%;
   padding-bottom: 5%;
-  font-family: monospace;
   line-height: 10px;
-  overflow-y: scroll;
-  width: 45em;
-}
-#userInput {
-  width: 33em;
-  bottom: 0;
+  word-wrap: break-word;
 }
 #userInput input {
+  position: relative;
+  right: 6px;
   width: 100%;
   height: 100%;
 }
